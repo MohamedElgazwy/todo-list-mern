@@ -15,19 +15,19 @@ export const AuthProvider = ({ children }) => {
     const storedToken = localStorage.getItem("token");
     if(storedToken) {
       setToken(storedToken);
-      apiRequest("/auth/me", "GET", null, storedToken).then(setUser).catch(() => logout());
+      apiRequest("/api/auth/me", "GET", null, storedToken).then(setUser).catch(() => logout());
     }
   }, []);
 
   const login = async (email, password) => {
-    const data = await apiRequest('/auth/login', 'POST', { email, password,});
+    const data = await apiRequest('/api/auth/login', 'POST', { email, password,});
     setUser(data);
     setToken(data.token);
     localStorage.setItem('token', data.token);
   };
 
   const register = async (name, email, password) => {
-    const data = await apiRequest('/auth/register', 'POST', { name, email, password,});
+    const data = await apiRequest('/api/auth/register', 'POST', { name, email, password,});
     setUser(data);
     setToken(data.token);
     localStorage.setItem('token', data.token);
