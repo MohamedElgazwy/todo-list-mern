@@ -13,7 +13,7 @@ export default function TodosPage() {
   useEffect(() => {
     if (!token) return;
 
-    apiRequest("/todos", "GET", null, token)
+    apiRequest("/api/todos", "GET", null, token)
       .then(setTodos)
       .finally(() => setLoading(false));
   }, [token]);
@@ -21,14 +21,14 @@ export default function TodosPage() {
   const addTodo = async () => {
     if (!title.trim()) return;
 
-    const todo = await apiRequest("/todos", "POST", { title }, token);
+    const todo = await apiRequest("/api/todos", "POST", { title }, token);
     setTodos([todo, ...todos]);
     setTitle("");
   };
 
   const toggleTodo = async (id, completed) => {
     const updated = await apiRequest(
-      `/todos/${id}`,
+      `/api/todos/${id}`,
       "PUT",
       { completed: !completed },
       token
@@ -38,7 +38,7 @@ export default function TodosPage() {
   };
 
   const deleteTodo = async (id) => {
-    await apiRequest(`/todos/${id}`, "DELETE", null, token);
+    await apiRequest(`/api/todos/${id}`, "DELETE", null, token);
     setTodos(todos.filter((t) => t._id !== id));
   };
 

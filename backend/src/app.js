@@ -1,26 +1,20 @@
-import express from 'express';
-import cors from 'cors';
-import authRoutes from './routes/auth.routes.js'
-import todoRoutes from './routes/todo.routes.js'
+import express from "express";
+import cors from "cors";
+
 const app = express();
 
-// Middleware to parse JSON bodies
 app.use(cors({
-  origin: "https://todo-list-mern-rust.vercel.app",
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  origin: [
+    "http://localhost:3000",
+    "https://todo-list-mern-rust.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
 
-
 app.use(express.json());
 
-// test route
-
-app.use('/api/auth', authRoutes);
-app.use('/api/todos', todoRoutes);
-
-app.get('/', (req, res) => {
-  res.json({ message: 'API is running'});
-});
-
-export default app;
+// routes بعد كده
+app.use("/api/auth", authRoutes);
+app.use("/api/todos", todoRoutes);
