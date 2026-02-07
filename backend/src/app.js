@@ -18,3 +18,4 @@ app.use(express.json());
 // routes بعد كده
 app.use("/api/auth", authRoutes);
 app.use("/api/todos", todoRoutes);
+export default app;
