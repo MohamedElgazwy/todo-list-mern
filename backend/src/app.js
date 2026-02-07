@@ -6,7 +6,7 @@ const app = express();
 
 // Middleware to parse JSON bodies
 app.use(cors({
-  origin: "https://todo-list-mern-eta.vercel.app",
+  origin: "https://todo-list-mern-rust.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
