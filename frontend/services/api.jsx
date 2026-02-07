@@ -1,7 +1,7 @@
-const API_URL = 'http://localhost:5000/api';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const apiRequest = async (endpoint, method = "GET", body, token ) => {
-  const request = await fetch(`${API_URL}${endpoint}`, {
+  const request = await fetch(`${BASE_URL}${endpoint}`, {
     method,
     headers: {
       "Content-Type": "application/json",
