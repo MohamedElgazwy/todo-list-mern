@@ -5,7 +5,11 @@ import todoRoutes from './routes/todo.routes.js'
 const app = express();
 
 // Middleware to parse JSON bodies
-app.use(cors());
+app.use(cors({
+  origin: "https://todo-list-mern-eta.vercel.app",
+  credentials: true
+}));
+
 app.use(express.json());
 
 // test route
