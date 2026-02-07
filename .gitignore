@@ -1,0 +1,15 @@
+# dependencies
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# next
+frontend/.next/
+
+# env
+.env
+backend/.env
+
+# misc
+.DS_Store
+npm-debug.log*
